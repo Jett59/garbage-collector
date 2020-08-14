@@ -15,4 +15,4 @@ test: test.exe
 	./test.exe
 
 test.exe: gc.lib
-	gcc -o test.exe src/test/*.c gc.lib
+	gcc -o test.exe src/test/*.c gc.*
