@@ -1,21 +1,15 @@
 all:
 	echo please specify windows/osx/linux
 
-osx: gc_osx.a
-linux: gc_linux.a
-windows: gc.lib
+osx: gc_osx.dylib
+linux: gc_linux.so
+windows: gc_windows.dll
 
-gc.lib:
-		gcc -o gc.lib -shared src/main/*.c
+gc_windows.dll:
+		gcc -o gc_windows.dll -shared src/main/*.c
 
-gc_osx.a:
-	gcc -o gc_osx.a -shared src/main/*.c
+gc_osx.dylib:
+	gcc -o gc_osx.dylib -shared src/main/*.c
 
-gc_linux.a:
-	gcc -o gc_linux.a -shared src/main/*.c
-
-test: test.exe
-	./test.exe
-
-test.exe: gc.lib
-	gcc -o test.exe src/test/*.c gc.*
+gc_linux.so:
+	gcc -o gc_linux.so -shared src/main/*.c
